@@ -28,6 +28,8 @@ import Page19 from '../components/mbti/part2/page19';
 import MbtiResult from '../components/mbti/backup/backupfiles-jason/result/MbtiResult';
 import SubmitResult from '../components/AI-Result/result';
 
+
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -222,6 +224,7 @@ const handleNext3 = () => {
     </div>
       <ProgressBar step={step}/>
       <AnimatePresence mode="wait">
+      {/* {step === 0 &&  <Page19 handleNext={handleNext} handleBack={handleBack}  step={step} setStep={setStep}  surveyData = {surveyData} updateAnswer = {updateAnswer}/>} */}
       {step === 0 && <StartScreen handleNext={handleNext} step={step} setStep={setStep} />}
       {/* {step === 0 &&  loggin === true && <StartScreen2 handleNext2={handleNext2} handleNext3={handleNext3}  step={step} setStep={setStep} />} */}
       {/* {step === 0 && <StartScreen3 handleNext={handleNext} step={step} setStep={setStep} />} */}
@@ -433,6 +436,7 @@ const handleNext3 = () => {
       >
       <Page19 handleNext={handleNext} handleBack={handleBack}  step={step} setStep={setStep}  surveyData = {surveyData} updateAnswer = {updateAnswer}/>
       </motion.div>
+
       /* {step === 6 && <EmailVerificationScreen handleNext={handleNext} step={step} setStep={setStep} surveyData = {surveyData} updateAnswer = {updateAnswer}/>}
       {step === 7 && <MbtiResult handleNext={handleNext}  step={step}setStep={setStep} surveyData = {surveyData} updateAnswer = {updateAnswer}/>}
       {step === 8 && <StartPawfectMatch handleNext={handleNext} step={step} setStep={setStep}  surveyData = {surveyData} updateAnswer = {updateAnswer}/>}
