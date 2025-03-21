@@ -8,7 +8,7 @@ interface ProgressBarProps {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ step }) => {
   
-  const progress = (step / 19) * 100;
+  const progress = ((step - 1) / 17) * 100;
   return (
     <div className="
     mt-0 md:mt-[100px]
@@ -37,11 +37,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step }) => {
                 className=" ml-[0px] h-full bg-[#5777D0] rounded-full transition-all duration-200 ease-in-out "
                 style={{ width: `${progress}%` }}
             ></div>
-
+ 
        
             <div
                 className="  absolute w-[10px] h-[10px] top-0 bg-[#27355D] rounded-full flex items-center justify-center"
-                style={{ left: `calc(${(7/19 * 100)}% - 10px)` }}
+                style={{ left: `calc(${(4/17 * 100)}% - 10px)` }}
             >
               <div
                 className="w-[4px] h-[4px]  bg-white rounded-full "
@@ -52,7 +52,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step }) => {
        
             <div
                 className="  absolute  w-[10px] h-[10px] top-0  bg-[#FFC542] rounded-full flex items-center justify-center"
-                style={{ left: `calc(${(11/19 * 100)}% - 10px)` }}
+                style={{ left: `calc(${(8/17 * 100)}% - 10px)` }}
             >
               <div
                 className="w-[4px] h-[4px]  bg-white rounded-full "
@@ -66,7 +66,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step }) => {
            text-[#27355D] 
            text-[14px]
            font-[600px]">
-           {step}/19
+           {step-1}/17
          </p> 
     </div>
     </div>

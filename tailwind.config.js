@@ -25,7 +25,7 @@ module.exports = {
         balooRegular: ['"Baloo 2 Regular"', "sans-serif"],
         balooExtraBold: ['"Baloo 2 ExtraBold"', "sans-serif"],
         Inter: ['"Inter"', "sans-serif"],
-        Ubuntu: ['"Ubuntu"', "sans-serif"],
+        ubuntu: ['var(--font-ubuntu)'],
         UbuntuLight: ['"Ubuntu Light"', "sans-serif"],
       },
     },
