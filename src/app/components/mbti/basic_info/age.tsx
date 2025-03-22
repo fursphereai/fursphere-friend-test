@@ -65,6 +65,8 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
     }
   }, [isDropdownOpen]);
 
+
+
   const getMatchingIndex = (searchTerm: string, options: string[]) => {
     // 过滤掉不需要的选项
     const filteredOptions = options.filter(age => 
@@ -113,9 +115,14 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
       handleNext(); 
     } 
   };
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
-    <div className="  max-w-[1440px] h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
+    <div className="  max-w-[1440px] h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
 
         <div className="w-full h-full max-w-[320px] md:max-w-[540px] relative">
           <div className="w-full h-full flex flex-col">

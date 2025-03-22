@@ -47,9 +47,9 @@ const Gender: React.FC<GenderProps> = ({ handleNext, handleBack, step, setStep, 
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
-    <div className="relative max-w-[1440px] h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
+    <div className="relative max-w-[1440px] h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
     
 
         <div className=" w-full max-w-[320px] md:max-w-[540px] h-full">
