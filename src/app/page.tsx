@@ -9,7 +9,7 @@ import Section4 from './components/Section4';
 import Section5 from './components/Section5';
 import Section6 from './components/Section6';
 import {useLoggin} from './context/LogginContext'
-
+import { useRouter } from 'next/navigation';
 const Home = () => {
 
   const { loggin, setLoggin } = useLoggin();
@@ -19,6 +19,15 @@ const Home = () => {
     const avatarPath = 'widget-avatars/rJ5W3JR1ALahUS4QSt7MhVatf89Vn9LSSY1dUzaRQQ8/lURE0N8GGwPSIoS_wZ4AwK99qHJFsa7PVsTTJ6TUkgmhwVn7d5HLVbC3yw8Ts-xHjwWkUelmtOzVvqWJbw0';
     setAvatarUrl(`/api/proxy/${encodeURIComponent(avatarPath)}`);
   }, []);
+
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/mbti');
+  }, []);
+
+  return null;
 
 
 
