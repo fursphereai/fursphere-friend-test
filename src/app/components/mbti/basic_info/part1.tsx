@@ -103,14 +103,14 @@ const Part1: React.FC<Part1Props>  = ({ handleNext, handleBack, step, setStep, s
                   leading-[38.73px]
                       ">Basic Info
         </label>
-
+{/* 
         <Image
           src="/cat_dog.svg"
           alt="pet" 
           width={320}
           height={320}
-          className=" w-[320px] h-[320px]  mt-[8px] md:mt-[-33px]"
-        />
+          className=" bg-black w-[320px] h-[320px]  mt-[8px] md:mt-[-33px]"
+        /> */}
 
         <label className="
                   mt-[12px] md:mt-[0px]
