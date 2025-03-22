@@ -120,27 +120,9 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
       />
     )}
 
-    {showSignup && (
-      <Signup 
-        setStep={setStep} 
-        handleNext={handleNext} 
-        setShowSignup={setShowSignup}
-        setShowLogin={setShowLogin}
-        setShowEmail={setShowEmail}
-        setResult1={setResult1}
-      />
-    )}
+  
 
-    {showLogin && (
-      <Loggin 
-        setStep={setStep} 
-        handleNext={handleNext} 
-        setShowSignup={setShowSignup}
-        setShowLogin={setShowLogin}
-        setShowEmail={setShowEmail}
-        setResult1={setResult1}
-      />
-    )}
+   
        
       <div className=" flex flex-col w-[320px] md:w-[540px] mx-auto ">
         <label

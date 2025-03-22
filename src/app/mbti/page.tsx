@@ -12,10 +12,7 @@ import Age from '../components/mbti/basic_info/age';
 import NamePhoto from '../components/mbti/basic_info/name_photo';
 
 import Part2 from '../components/mbti/behavioral_quiz/part2';
-import SubmitPage from '../components/mbti/result/test1';
-import Result1 from '../components/mbti/result/result1';
-import Result2 from '../components/mbti/result/result2';
-import Result3 from '../components/mbti/result/result3';
+
 
 // import Question1 from '../components/mbti/behavioral_quiz/question1';
 // import Question2 from '../components/mbti/behavioral_quiz/question2';
@@ -35,15 +32,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 
 
-
-
-
-
-import EmailVerificationScreen from '../components/mbti/backup/backupfiles-jason/email/EmailVerificationScreen'
-
-import StartPawfectMatch from '../components/mbti/backup/backupfiles-jason/match/StartPawfectMatch';
-import PawfectMatch from '../components/mbti/backup/backupfiles-jason/match/PawfectMatch';
-import PawfectMatchResult from '../components/mbti/backup/backupfiles-jason/match/PawfectMatchResult';
 
 import {useLoggin} from '../context/LogginContext'
 import DownloadPage1 from '../components/mbti/downloads/downloadpage1';
@@ -96,6 +84,7 @@ const PetMBTIFlow = () => {
       PetBreed: string,
       PetBreedCustom: string,
       PetGender: string,
+      PetSex: string;
       PetAge: string,
       PetName: string,
       PetPhoto: string,
@@ -134,6 +123,7 @@ const PetMBTIFlow = () => {
     pet_info: {
       PetSpecies: '',
       PetBreed: '',
+      PetBreedCustom: '',
       PetGender: '',
       PetSex: '',
       PetAge: '',
@@ -168,28 +158,28 @@ const PetMBTIFlow = () => {
   const updateAnswer = <
   T extends keyof typeof surveyData,
   K extends keyof typeof surveyData[T]
-    >(
-      category: T,
-      subCategory: K | null,
-      field: keyof typeof surveyData[T] | string,
-      value: string
-    ) => {
-      setSurveyData(prev => ({
-        ...prev,
-        [category]: subCategory
-          ? {
-              ...prev[category],
-              [subCategory]: {
-                ...prev[category][subCategory as keyof typeof surveyData[T]],
-                [field]: value
-              }
-            }
-          : {
-              ...prev[category],
-              [field]: value
-            }
-      }));
-      console.log(surveyData);
+>(
+  category: T,
+  subCategory: K | null,
+  field: keyof typeof surveyData[T] | string,
+  value: string | File
+) => {
+  setSurveyData(prev => ({
+    ...prev,
+    [category]: subCategory
+      ? {
+          ...prev[category],
+          [subCategory]: {
+            ...prev[category][subCategory as keyof typeof surveyData[T]],
+            [field]: value
+          }
+        }
+      : {
+          ...prev[category],
+          [field]: value
+        }
+  }));
+  console.log(surveyData);
 };
 
 const handleNext = () => {
@@ -236,31 +226,29 @@ const [downloadPage5, setDownloadPage5] = useState(false);
 const [aiResult, setAiResult] = useState(false);
 
 const basicInfoPages = [
-  // {
-  //   step: 0,
-  //   key: "startScreen",
-  //   Component: StartScreen,
-  //   requiresPart1: true
-  // },
   {
     step: 1,
     key: "specieBreed",
-    Component: SpecieBreed
+    Component: SpecieBreed,
+    props: {}
   },
   {
     step: 2,
     key: "gender",
-    Component: Gender
+    Component: Gender,
+    props: {}
   },
   {
     step: 3,
     key: "age",
-    Component: Age
+    Component: Age,
+    props: {}
   },
   {
     step: 4,
     key: "namePhoto",
-    Component: NamePhoto
+    Component: NamePhoto,
+    props: {}
   }
 ];
 
@@ -284,7 +272,7 @@ return (
       </motion.div>
       } 
 
-      {basicInfoPages.map(({ step: pageStep, key, Component }) => (
+      {basicInfoPages.map(({ step: pageStep, key, Component, props }) => (
         (part1 === false && part2 === false && step === pageStep && (
           <motion.div
             key={key}
@@ -300,8 +288,8 @@ return (
               setStep={setStep}
               surveyData={surveyData}
               updateAnswer={updateAnswer}
-              setPart1={setPart1}
               setPart2={setPart2}
+              {...props}
             />
           </motion.div>
         )

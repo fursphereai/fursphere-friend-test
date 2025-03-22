@@ -3,12 +3,17 @@ import React, { useEffect, useState } from 'react';
 import ImageUpload from '../ImageUpload';
 
 interface SurveyData {
-
   pet_info: {
-    PetName: string,
-    PetPhoto: string,
+    PetSpecies: string;
+    PetBreed: string;
+    PetGender: string;
+    PetSex: string;
+    PetAge: string;
+    PetName: string;
+    PetPhoto: string | File;
   };
-  
+  user_info: any;
+  personality_and_behavior: any;
 }
 
 
