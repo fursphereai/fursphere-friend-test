@@ -20,7 +20,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out" 
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.10.1",
@@ -28,6 +28,7 @@
     "axios": "^1.8.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "firebase": "^11.5.0",
     "framer-motion": "^12.4.10",
     "html2canvas": "^1.4.1",
     "next": "^15.1.7",

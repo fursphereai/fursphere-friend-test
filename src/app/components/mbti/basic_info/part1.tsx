@@ -123,8 +123,7 @@ const Part1: React.FC<Part1Props>  = ({ handleNext, handleBack, step, setStep, s
                       ">Your pet’s species, breed, age, and gender, which play a crucial role in shaping their personality.
         </label>
         </div>
-        <div className="flex flex-col items-center
-          ">
+        <div className="flex flex-col items-center">
           <button 
             className="
             mx-auto flex flex-row items-center justify-center

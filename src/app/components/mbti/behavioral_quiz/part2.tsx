@@ -121,9 +121,7 @@ const Part2: React.FC<BasicInfoScreenProps>  = ({ handleNext, handleBack, step, 
                       ">Your pet's daily behaviors and habits reflect its unique MBTI personality.
         </label>
         </div>
-        <div className="max-w-[1440px] mx-auto h-[calc(100vh-571px)]
-        flex flex-col items-center justify-end md:justify-start
-          ">
+        <div className="flex flex-col items-center">
           <button 
             className="
             mx-auto flex flex-row items-center justify-center

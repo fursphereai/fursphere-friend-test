@@ -4,6 +4,7 @@ import Loggin from '../loggin_signup/loggin';
 import Signup from '../loggin_signup/signup';
 import Email from '../loggin_signup/email';
 import { handleSubmit } from '../submit_result';
+import { saveResult } from '../surveyService';
 
 interface SurveyData {
   user_info: {
@@ -83,6 +84,7 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
   ];
 
   const handleNextClick = async() => {
+    handleSubmit();
     setShowComment(true); 
  
   };
@@ -97,8 +99,25 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
-  
 
+
+  const handleSubmit = async () => {
+    try {
+      // Debug log
+      console.log('Submitting data...')
+  
+      const data = {
+        surveyData
+      }
+  
+      console.log('Data to submit:', data)
+      const result = await saveResult(data)
+      console.log('Save result:', result)
+  
+    } catch (error: any) {
+      console.error('Submit error:', error.message)
+    }
+  }
 
   return (
 
