@@ -71,7 +71,7 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
 
 
   return (
-    <div className="mx-auto max-w-[1440px] bg-[#FFFFFF] h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] flex flex-col items-center justify-center">
+    <div className="mx-auto max-w-[1440px] bg-red-300 h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] flex flex-col items-center justify-center">
 
      
       
