@@ -127,8 +127,7 @@ const Part2: React.FC<BasicInfoScreenProps>  = ({ handleNext, handleBack, step, 
           <button 
             className="
             mx-auto flex flex-row items-center justify-center
-            max-md:mb-[48px] 
-            md:mt-[59px]
+            absolute bottom-[48px]
             w-[150px] h-[44px]
             rounded-[22px]
             bg-[#5777D0] 
