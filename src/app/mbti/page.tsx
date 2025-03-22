@@ -41,7 +41,7 @@ import DownloadPage1 from '../components/mbti/downloads/downloadpage1';
 const PetMBTIFlow = () => {
 
   const { loggin, setLoggin } = useLoggin();
-  const initialStep = 15; 
+  const initialStep = 0; 
   const [step, setStep] = useState(initialStep);
  
 
