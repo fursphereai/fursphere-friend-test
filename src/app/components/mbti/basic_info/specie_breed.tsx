@@ -213,7 +213,7 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
                       </div>
                       <div className="relative mx-[20px] h-[200px] overflow-hidden">
                         <div className="absolute inset-0  flex items-center justify-center pointer-events-none">
-                          <div className=" w-full h-[50px] bg-[#D1D7EF] opacity-20" />
+                          <div className=" w-full h-[50px] bg-[#D1D7EF] opacity-20 z-50" />
                         </div>
                         <div 
                           className="h-full bg-[#FFFFFF] rounded-[6px] overflow-auto snap-y snap-mandatory"
