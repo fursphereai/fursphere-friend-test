@@ -86,8 +86,14 @@ const Question3: React.FC<Question3Props> = ({
       : '#C3C3C3'; // Gray when 5
   };
 
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
+  
+
   return (
-    <div className='relative mx-auto w-full max-w-[1440px]  h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] w-full flex justify-center'>
+    <div className='relative mx-auto w-full max-w-[1440px]  h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] w-full flex justify-center'>
     <div className="quiz-container">
       {/* 问题文本 */}
       <div className="question-container h-[38px] md:h-[44px] leading-[19.36px]">

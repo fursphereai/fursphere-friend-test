@@ -93,10 +93,16 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
     }
   };
 
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
+  
+
 
   return (
 
-    <div className=" relative w-full mx-auto h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
+    <div className=" relative w-full mx-auto h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
 
     {showComment && (
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">

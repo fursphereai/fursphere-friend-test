@@ -102,8 +102,14 @@ const Question5: React.FC<Question5Props> = ({
     setStep(nextStep);
   }
 
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
+  
+
   return (
-    <div className='relative  mx-auto w-full   h-[calc(100vh-40px)] md:h-[calc(100vh-140px)] w-full flex flex-col justify-center'>
+    <div className='relative  mx-auto w-full   h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] w-full flex flex-col justify-center'>
       {showBanner && (
 
         <div className="mx-auto h-[100px] md:h-[80px] w-full bg-[#FEF0C7] flex items-center justify-center">
