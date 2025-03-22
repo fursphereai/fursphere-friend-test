@@ -103,14 +103,14 @@ const Part1: React.FC<Part1Props>  = ({ handleNext, handleBack, step, setStep, s
                   leading-[38.73px]
                       ">Basic Info
         </label>
-{/* 
+
         <Image
           src="/cat_dog.svg"
           alt="pet" 
           width={320}
           height={320}
-          className=" bg-black w-[320px] h-[320px]  mt-[8px] md:mt-[-33px]"
-        /> */}
+          className="w-[320px] h-[320px]  mt-[8px] md:mt-[-33px]"
+        />
 
         <label className="
                   mt-[12px] md:mt-[0px]
@@ -123,8 +123,7 @@ const Part1: React.FC<Part1Props>  = ({ handleNext, handleBack, step, setStep, s
                       ">Your pet’s species, breed, age, and gender, which play a crucial role in shaping their personality.
         </label>
         </div>
-        <div className="max-w-[1440px] mx-auto h-[calc(100vh-571px)]
-        flex flex-col items-center justify-end md:justify-start
+        <div className="flex flex-col items-center
           ">
           <button 
             className="
