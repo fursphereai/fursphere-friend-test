@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { LogginProvider } from "./context/LogginContext";
 import { ProgressProvider } from "./context/ProgressContext";
 import { Inter, Ubuntu, Poppins } from 'next/font/google'
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 const ubuntu = Ubuntu({
   weight: ['300', '400', '500', '700'],
@@ -33,12 +31,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    // Scroll to top when route changes
-    window.scrollTo(0, 0);
-  }, [pathname]);
   return (
     <html lang="en" className={`${ubuntu.variable} ${poppins.variable} ${ubuntu.className}`}>
       <body className={inter.className}>

@@ -68,7 +68,11 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
       : '#C3C3C3'; // Gray when 5
   };
   const currentOptionRef = useRef<string>('');
-
+  
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="mx-auto max-w-[1440px] bg-red-300 h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] flex flex-col items-center justify-center">
