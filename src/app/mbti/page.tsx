@@ -254,7 +254,7 @@ const basicInfoPages = [
 
   
 return (
-    <div className="w-full bg-red-500 h-[100svh] md:min-h-screen flex flex-col">
+    <div className="w-full bg-red-500 h-[100svh]">
     <div className="hidden md:flex">
       <Header/>
     </div>
