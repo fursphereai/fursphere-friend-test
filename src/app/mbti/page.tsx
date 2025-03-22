@@ -258,7 +258,7 @@ return (
     <div className="hidden md:flex">
       <Header/>
     </div>
-      {(part1 === false && part2 === false && step !== 0 && result1 === false && result2 === false && result3 === false) && <ProgressBar step={step}/>}
+      {/* {(part1 === false && part2 === false && step !== 0 && result1 === false && result2 === false && result3 === false) && <ProgressBar step={step}/>} */}
       <AnimatePresence mode="wait">
       {part1 && 
       <motion.div
