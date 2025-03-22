@@ -21,6 +21,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^5.10.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "axios": "^1.8.2",
     "cors": "^2.8.5",
