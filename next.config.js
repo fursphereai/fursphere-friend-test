@@ -1,15 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-  output: 'export',  // Enable static exports
+  // Remove output: 'export' if you need API routes
   images: {
     unoptimized: true,
   },
-  // If you're deploying to GitHub Pages, add:
-  basePath: '/fursphere-friend-test',  // Replace with your repository name
-  assetPrefix: '/fursphere-friend-test/',
+  // Remove experimental.appDir as it's no longer needed
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
