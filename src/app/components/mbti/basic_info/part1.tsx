@@ -72,7 +72,7 @@ const Part1: React.FC<Part1Props>  = ({ handleNext, handleBack, step, setStep, s
   }, []);
   
   return (
-    <div className="h-[calc(100svh-40px)] mt-[56px] md:mt-[100px] bg-[#F5F5F5]">
+    <div className="h-[100svh] md:mt-[100px] bg-[#F5F5F5]">
       
       <div className="flex flex-col  mx-auto max-w-[1440px] max-h-[531px] md:max-h-[461px] items-center h-full ">
         <label className="

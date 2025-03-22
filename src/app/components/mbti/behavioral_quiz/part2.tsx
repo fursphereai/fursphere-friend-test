@@ -70,7 +70,7 @@ const Part2: React.FC<BasicInfoScreenProps>  = ({ handleNext, handleBack, step, 
   }, []);
   
   return (
-    <div className="mt-[56px] h-[calc(100svh-40px)] md:mt-[100px] bg-[#F5F5F5]">
+    <div className=" h-[100svh] md:mt-[100px] bg-[#F5F5F5]">
       
       <div className="flex flex-col  mx-auto max-w-[1440px] max-h-[531px] md:max-h-[461px] items-center h-full ">
         <label className="
