@@ -269,15 +269,19 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
           
         <div className=" relative flex flex-col  items-center  w-full mx-auto h-full ">
 
-          <div className="  max-w-[540px] flex flex-col items-left  h-full">
+          <div className=" max-w-[540px] flex flex-col items-left  h-full">
             <div className="
                     mt-[40px] md:mt-[85px]
                     text-[16px] md:text-[18px]
-                    font-[Inter]
+                    font-inter
                     font-[400]
                     ml-[10px]
                         ">My pet is a
             </div>
+
+            {/* <div className="text-[16px] md:text-[18px] text-[#101828] font-inter tracking-[-0.4px] mt-[40px] md:mt-[85px] pl-[10px]">
+                How old is {surveyData.pet_info.PetGender === 'boy' ? 'he' : 'she'}?
+              </div> */}
 
           <div className="  flex flex-row w-[320px] md:w-[540px] h-[44px] mt-[19px]">
 
