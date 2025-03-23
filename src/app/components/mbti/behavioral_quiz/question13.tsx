@@ -121,7 +121,7 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
 
   return (
 
-    <div className=" relative w-full mx-auto h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
+    <div className=" relative w-full mx-auto h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
 
     {showComment && (
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
@@ -156,13 +156,14 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
             text-[16px] md:text-[18px]
             font-[Inter]
             font-[400]
-            ml-[10px]`}
+            ml-[10px]
+            text-center`}
         >
-          Anything else you want to tell us?
+          Please leave your email for us to better in touch with you!
         </label>
         <input
           type="text"
-          placeholder="Tell us more about your pet"
+          placeholder="email"
           className="
             w-[100%] 
             md:w-[540px] 
@@ -177,9 +178,11 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
             focus:outline-none focus:border-[#FFC542]
             placeholder:[#C3C3C3] placeholder:text-[16px] md:placeholder:text-[18px]
           "
-          value={comment}
+          value={email}
           onChange={(e) => {
-            setComment(e.target.value);
+            setEmail(e.target.value);
+            updateAnswer('user_info', 'email', 'email', e.target.value);
+            
           }}
         />
 

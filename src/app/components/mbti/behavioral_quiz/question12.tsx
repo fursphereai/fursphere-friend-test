@@ -20,6 +20,10 @@ interface Question12Props {
     field: string,
     value: string
   ) => void;
+  showBanner2: boolean;
+  setShowBanner2: (showBanner2: boolean) => void;
+  step: number;
+  setStep: (step: number) => void;
 }
 
 const reactionOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -54,6 +58,10 @@ const Question12: React.FC<Question12Props> = ({
   handleSkip,
   surveyData,
   updateAnswer,
+  showBanner2,
+  setShowBanner2,
+  step,
+  setStep
 }) => {
   const [selectedOption, setSelectedOption] = useState<any>(
     getReactionNumber(surveyData.personality_and_behavior.Structure_Spontaneity.follow_commands) || 5
@@ -89,11 +97,59 @@ const Question12: React.FC<Question12Props> = ({
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
-  
 
+  const handleCloseBanner = () => {
+    setShowBanner2(false);
+  }
+
+  const handleFinalStep = () => {
+    const nextStep = 18;
+    // window.history.pushState({ step: nextStep }, '', `?step=${nextStep}`);
+    setStep(nextStep);
+  }
 
   return (
-    <div className='relative mx-auto w-full max-w-[1440px]  h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] w-full flex justify-center'>
+    <div className='relative mx-auto w-full max-w-[1440px]  h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] w-full flex flex-col justify-center'>
+      {showBanner2 && (
+
+<div className="mx-auto h-[100px] md:h-[80px] w-full bg-[#FEF0C7] flex items-center justify-center">
+  
+  <div className=" mx-auto w-[320px] md:w-[540px] flex flex-row items-center justify-between ">
+    
+    <div className="flex flex-col max-w-[289px] md:max-w-[450px] gap-[10px]">
+      <span className="max-w-[289px] md:max-w-[450px] text-[14px] text-[#717680] leading-[16.94px]">
+      More information can helps us generate a more accurate MBTI result for your pet. But if you are getting tired, here’s the
+      </span>
+      <a
+        href="#sample" 
+        className=" text-[14px] text-[#5777D0] underline hover:opacity-80 leading-[16.94px]"
+        onClick={handleFinalStep}
+      >
+        Shortcut to final step
+      </a>
+    </div>
+
+    <button
+      onClick={handleCloseBanner}
+      className="text-[#27355D] hover:opacity-80 transition-all"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+)}
     <div className="quiz-container">
       {/* 问题文本 */}
       <div className="question-container h-[38px] md:h-[44px] leading-[19.36px]">

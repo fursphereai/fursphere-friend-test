@@ -21,6 +21,8 @@ interface Question5Props {
     value: string
   ) => void;
   setStep: (step: number) => void;
+  showBanner2: boolean;
+  setShowBanner2: (showBanner2: boolean) => void;
 }
 
 const reactionOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -57,17 +59,15 @@ const Question5: React.FC<Question5Props> = ({
   surveyData,
   updateAnswer,
   setStep,
+  showBanner2,
+  setShowBanner2
 }) => {
   const [selectedOption, setSelectedOption] = useState<any>(
     getReactionNumber(surveyData.personality_and_behavior.Routin_Curiosity.friend_visit_behaviors) || 5
   );
 
-  const [showBanner, setShowBanner] = useState(true);
   
-  const handleCloseBanner = () => {
-    setShowBanner(false);
-  }
-
+  
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -96,6 +96,10 @@ const Question5: React.FC<Question5Props> = ({
       : '#C3C3C3'; // Gray when 5
   };
 
+  const handleCloseBanner = () => {
+    setShowBanner2(false);
+  }
+
   const handleFinalStep = () => {
     const nextStep = 18;
     // window.history.pushState({ step: nextStep }, '', `?step=${nextStep}`);
@@ -109,12 +113,13 @@ const Question5: React.FC<Question5Props> = ({
   
 
   return (
-    <div className='relative  mx-auto w-full   h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] w-full flex flex-col justify-center'>
-      {showBanner && (
+    <div className='relative  mx-auto w-full   h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] w-full flex flex-col justify-center'>
+      {showBanner2 && (
 
         <div className="mx-auto h-[100px] md:h-[80px] w-full bg-[#FEF0C7] flex items-center justify-center">
           
           <div className=" mx-auto w-[320px] md:w-[540px] flex flex-row items-center justify-between ">
+            
             <div className="flex flex-col max-w-[289px] md:max-w-[450px] gap-[10px]">
               <span className="max-w-[289px] md:max-w-[450px] text-[14px] text-[#717680] leading-[16.94px]">
               More information can helps us generate a more accurate MBTI result for your pet. But if you are getting tired, here’s the
@@ -279,7 +284,7 @@ const Question5: React.FC<Question5Props> = ({
 
  
       {/* Desktop 端的按钮 */}
-      <div className= {`button-container desktop absolute ${showBanner ? 'top-[473px]' : 'top-[393px]'} left-0 right-0 w-[540px] mx-auto flex justify-between
+      <div className= {`button-container desktop absolute ${showBanner2 ? 'top-[473px]' : 'top-[393px]'} left-0 right-0 w-[540px] mx-auto flex justify-between
       `}>
         <button className="nav-button previous" onClick={handleBack}>Previous</button>
         <button className="nav-button skip" onClick={handleSkip}>Skip</button>

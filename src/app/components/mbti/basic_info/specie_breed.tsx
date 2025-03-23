@@ -23,7 +23,7 @@ interface SpecieBreedProps {
 
 
 
-const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step, setStep, surveyData, updateAnswer  }) => {
+const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step, setStep, surveyData, updateAnswer }): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState('');
   const [isOpen2, setIsOpen2] = useState(false);
@@ -31,6 +31,7 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
   const PetSpecies: string[] =  [
     'Dog', 'Cat', 'Others'
   ];
+  const [breedavailable, setBreedavailable] = useState(false);
   
   const [customBreed, setCustomBreed] = useState(surveyData.pet_info.PetBreedCustom || '');
   const [Breed, setBreed] = useState('');
@@ -38,13 +39,101 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
   const getPetBreed = (PetSpecies: string): string[] => {
     switch (PetSpecies) {
       case 'Dog':
-        return ['Hound', 'Mastiff', 'Retriever', 'Shepherd', 'Sighthound', 'Spitz-type', 'Spaniel', 'Terrier', 'Toy Dogs', 'Working Dogs'];
+        return [
+          'Not Sure',
+          'Akita',
+          'Alaskan Malamute',
+          'American Bulldog',
+          'American Cocker Spaniel',
+          'Australian Cattle Dog',
+          'Australian Shepherd',
+          'Basset Hound',
+          'Beagle',
+          'Belgian Malinois',
+          'Bernese Mountain Dog',
+          'Bichon Frise',
+          'Border Collie',
+          'Boston Terrier',
+          'Boxer',
+          'Bulldog (English Bulldog)',
+          'Bull Terrier',
+          'Bullmastiff',
+          'Cane Corso',
+          'Cavalier King Charles Spaniel',
+          'Chihuahua',
+          'Chinese Crested',
+          'Chow Chow',
+          'Cocker Spaniel (English or American)',
+          'Collie',
+          'Corgi (Welsh Corgi)',
+          'Cockapoo',
+          'Dachshund',
+          'Dalmatian',
+          'Doberman',
+          'Dogo Argentino',
+          'French Bulldog',
+          'German Shepherd',
+          'Golden Retriever',
+          'Great Dane',
+          'Greyhound',
+          'Havanese',
+          'Husky (Siberian Husky)',
+          'Jack Russell Terrier',
+          'Japanese Chin',
+          'Keeshond',
+          'King Charles Spaniel',
+          'Labrador Retriever',
+          'Lhasa Apso',
+          'Leonberger',
+          'Maltese',
+          'Maltipoo',
+          'Mastiff',
+          'Miniature Pinscher',
+          'Miniature Schnauzer',
+          'Mutt (Mixed Breed)',
+          'Newfoundland',
+          'Norwich Terrier',
+          'Papillon',
+          'Pekingese',
+          'Pembroke Corgi',
+          'Pit Bull',
+          'Pomeranian',
+          'Poodle (Toy / Mini / Standard)',
+          'Pug',
+          'Rhodesian Ridgeback',
+          'Rottweiler',
+          'Saint Bernard',
+          'Samoyed',
+          'Scottish Terrier',
+          'Shar Pei',
+          'Shetland Sheepdog (Sheltie)',
+          'Shiba Inu',
+          'Shih Tzu',
+          'Springer Spaniel',
+          'Staffordshire Bull Terrier',
+          'Tibetan Mastiff',
+          'Toy Poodle',
+          'Weimaraner',
+          'West Highland Terrier (Westie)',
+          'Whippet',
+          'Wire Fox Terrier',
+          'Yorkie (Yorkshire Terrier)'];
       case 'Cat':
         return ['Folded Ear', 'Hairless Cats', 'Hybrid Breeds', 'Longhair Cats', 'Natural Breeds', 'Oriental Cats', 'Shorthair Cats'];
+      case 'Others':
+        return [];
       default:
-        return ['Others'];
+        return [];
     }
   };
+
+  useEffect(() => {
+    if (surveyData.pet_info.PetSpecies === 'Others') {
+      setBreedavailable(false);
+    } else {
+      setBreedavailable(true);
+    }
+  }, [surveyData.pet_info.PetSpecies]);
   
 
   const PetBreed = getPetBreed(selected);
@@ -56,16 +145,21 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleNextPage2 = () => {
-    
-    if (surveyData.pet_info.PetSpecies && surveyData.pet_info.PetBreed) {
+    if (surveyData.pet_info.PetSpecies && surveyData.pet_info.PetSpecies !== 'Others') {
       handleNext(); 
-    } 
+    } else if (surveyData.pet_info.PetSpecies === 'Others' && surveyData.pet_info.PetBreedCustom !== '') {
+      handleNext();
+    }
   };
 
   const getNextButtonColor = () => {
-    return surveyData.pet_info.PetSpecies && surveyData.pet_info.PetBreed
-      ? '#5777D0' // Blue when not 5
-      : '#C3C3C3'; // Gray when 5
+    if (surveyData.pet_info.PetSpecies && surveyData.pet_info.PetSpecies !== 'Others') {
+      return '#5777D0'; // Blue when not 5
+    } else if (surveyData.pet_info.PetSpecies === 'Others' && surveyData.pet_info.PetBreedCustom !== '') {
+      return '#5777D0'; // Blue when not 5
+    } else {
+      return '#C3C3C3'; // Gray when 5
+    }
   };
   const currentOptionRef = useRef<string>('');
 
@@ -75,7 +169,7 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
   }, []);
 
   return (
-    <div className="mx-auto max-w-[1440px] h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] flex flex-col items-center justify-center">
+    <div className="mx-auto max-w-[1440px] h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] flex flex-col items-center justify-center">
 
      
       
@@ -186,10 +280,10 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
           {isOpen && (
                   <>
                     <div 
-                      className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden"
+                      className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden animate-fade-in"
                       onClick={() => setIsOpen(false)}
                     />
-                    <div className="md:hidden fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50">
+                    <div className="md:hidden fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50  animate-slide-up">
                       <div className="flex  justify-between items-center px-[20px] pt-[30px] pb-[11px]">
                         <button 
                           className="text-[#61616180] text-[Ubuntu] font-[400] text-[14px]" 
@@ -258,25 +352,29 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
           </div>
 
           <div className="relative flex flex-row ml-[20px] w-[180px] md:w-[260px] h-[44px]">
+
+          {breedavailable && (
           <button
             onClick={() => setIsOpen2(!isOpen2)}
+            disabled={!breedavailable}
             className={`
+              bg-white
               w-full h-full
               pl-[16px] 
               border border-[#717680] border-[1px]
               rounded-[22px]
-              bg-white
               focus:outline-none focus:border-[#FFC542]
               font-[Inter]
               text-left
              ${surveyData.pet_info.PetBreed ? 'text-[#27355D]' : 'text-[#C3C3C3]'}
               text-[16px]
+             
           `}
           >
-          {surveyData.pet_info.PetBreed || 'Breed'}
-
+          {!breedavailable ? '' : (surveyData.pet_info.PetBreed || 'Breed')}
         </button>
-
+          )}
+         {breedavailable && (
           <div className="absolute right-[16px] top-1/2 -translate-y-1/2 pointer-events-none">
             <svg 
               width="10" 
@@ -294,6 +392,8 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
               />
             </svg>
           </div>
+          )}
+     
                 {/* Dropdown menu */}
         {isOpen2 && (
           <div className="
@@ -350,10 +450,10 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
 {isOpen2 && (
                   <>
                     <div 
-                      className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden"
+                      className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden animate-fade-in"
                       onClick={() => setIsOpen2(false)}
                     />
-                    <div className="md:hidden fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50">
+                    <div className="md:hidden fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50  animate-slide-up">
                       <div className="flex  justify-between items-center px-[20px] pt-[30px] pb-[11px]">
                         <button 
                           className="text-[#61616180] text-[Ubuntu] font-[400] text-[14px]" 
@@ -426,8 +526,8 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
 
 
 
+          {breedavailable && (
           <label className="
-                  
                   w-[300px] md:w-full
                   text-[14px] md:text-[16px]
                   leading-normal
@@ -437,6 +537,20 @@ const SpecieBreed: React.FC<SpecieBreedProps>  = ({ handleNext, handleBack, step
                   mt-[20px] ml-[10px]
                       ">*If you can not find your pet's breed in our list, please enter here
           </label>
+          )}
+
+         {!breedavailable && (
+          <label className="
+                  w-[300px] md:w-full
+                  text-[14px] md:text-[16px]
+                  leading-normal
+                  font-[Inter]
+                  font-[400]
+                  text-[#A0A0A0]
+                  mt-[20px] ml-[10px]
+                      ">*Tell us your pet's species
+          </label>
+          )}
           <input 
               type="text"
               placeholder="Please enter a breed / species"

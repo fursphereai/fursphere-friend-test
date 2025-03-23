@@ -122,7 +122,7 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
   }, []);
   
   return (
-    <div className="  max-w-[1440px] h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
+    <div className="  max-w-[1440px] h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] mx-auto w-full flex justify-center">
 
         <div className="w-full h-full max-w-[320px] md:max-w-[540px] relative">
           <div className="w-full h-full flex flex-col">
@@ -152,10 +152,10 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
                 {isDropdownOpen && (
                   <>
                     <div 
-                      className="fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden"
+                      className="fixed inset-0 bg-black bg-opacity-50 z-40 overflow-hidden animate-fade-in"
                       onClick={() => setIsDropdownOpen(false)}
                     />
-                    <div className="fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50">
+                    <div className="fixed bg- bottom-0 bg-[#FFFFFFCC] h-[327px] left-0 right-0  z-50 animate-slide-up">
                       <div className="flex  justify-between items-center px-[20px] pt-[30px] pb-[11px]">
                         <button 
                           className="text-[#61616180] text-[Ubuntu] font-[400] text-[14px]" 

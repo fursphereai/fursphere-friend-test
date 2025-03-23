@@ -30,6 +30,7 @@ import Question13 from '../components/mbti/behavioral_quiz/question13';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
+import MobileHeader from '../components/mbti/mobile-header';
 
 
 
@@ -225,6 +226,8 @@ const [downloadPage5, setDownloadPage5] = useState(false);
 
 const [aiResult, setAiResult] = useState(false);
 
+const [showBanner2, setShowBanner2] = useState(true);
+
 const basicInfoPages = [
   {
     step: 1,
@@ -254,7 +257,10 @@ const basicInfoPages = [
 
   
 return (
-    <div className="w-full bg-red-500 h-[100svh]">
+    <div className="w-full h-[100svh]">
+    <div className="md:hidden">
+      <MobileHeader step={step} setStep={setStep} setPart1={setPart1}/>
+    </div>
     <div className="hidden md:flex">
       <Header/>
     </div>
@@ -331,6 +337,8 @@ return (
                 setResult1 = {setResult1}
                 setResult2 = {setResult2}
                 setResult3 = {setResult3}
+                showBanner2 = {showBanner2}
+                setShowBanner2 = {setShowBanner2}
               />;
             })()}
           </motion.div>

@@ -54,7 +54,7 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
 
   return (
 
-    <div className=" relative  w-full mx-auto h-[calc(100svh-40px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
+    <div className=" relative  w-full mx-auto h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] max-h-[1440px]">
         {showBanner && (
 
         <div className=" h-[100px] md:h-[80px] w-full bg-[#FEF0C7] flex items-center justify-center">
