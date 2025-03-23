@@ -154,7 +154,7 @@ const Question9: React.FC<Question9Props> = ({
 )}
     <div className="quiz-container">
       {/* 问题文本 */}
-      <div className="question-container h-[57px] md:h-[44px] leading-[19.36px]">
+      <div className="question-container h-[57px] md:h-[44px] leading-[19.36px] text-[#101828]">
         <h2>How does your pet react when other pets trying to make friend with him/her? </h2>
       </div>
 

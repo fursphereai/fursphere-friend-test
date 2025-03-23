@@ -273,11 +273,11 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
             <div className="
                     mt-[40px] md:mt-[85px]
                     text-[16px] md:text-[18px]
-                    font-inter
+                    font-[Inter]
+                    text-[#101828]
                     font-[400]
                     ml-[10px]
                     w-full
-                    bg-blue-500
                         ">My pet is a
             </div>
 
@@ -437,7 +437,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                             <div
                               key={species}
                               data-species={species}
-                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-50`}
+                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px]  text-[#101828] font-[400]`}
                             >
                               {species}
                             </div>
@@ -611,7 +611,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                             <div
                               key={breed}
                               data-breed={breed}
-                              className={`breed-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-50`}
+                              className={`breed-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] text-[#101828]`}
                             >
                               {breed}
                             </div>

@@ -96,7 +96,7 @@ const Question3: React.FC<Question3Props> = ({
     <div className='relative mx-auto w-full max-w-[1440px]  h-[calc(100svh-96px)] md:h-[calc(100vh-140px)] w-full flex justify-center'>
     <div className="quiz-container">
       {/* 问题文本 */}
-      <div className="question-container h-[38px] md:h-[44px] leading-[19.36px]">
+      <div className="question-container h-[38px] md:h-[44px] leading-[19.36px] text-[#101828]">
         <h2>How does your pet typically behave when stranger enters his/her territory?</h2>
       </div>
 

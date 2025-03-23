@@ -161,6 +161,7 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
             font-[Inter]
             font-[400]
             ml-[10px]
+            text-[#101828]
             text-center`}
         >
           Please leave your email for us to better in touch with you!

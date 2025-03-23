@@ -155,7 +155,7 @@ const Question6: React.FC<Question6Props> = ({
 )}
     <div className="quiz-container">
       {/* 问题文本 */}
-      <div className="question-container h-[57px] md:h-[44px] leading-[19.36px]">
+      <div className="question-container h-[57px] md:h-[44px] leading-[19.36px] text-[#101828]">
         <h2>If you don't take care of your pet for 7 days, how would his/her fur or living space look? </h2>
       </div>
 

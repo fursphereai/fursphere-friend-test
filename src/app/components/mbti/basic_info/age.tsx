@@ -210,7 +210,7 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
                             <div
                               key={age}
                               data-age={age}
-                              className={`age-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-50`}
+                              className={`age-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] text-[#101828]`}
                             >
                               {age}
                             </div>
