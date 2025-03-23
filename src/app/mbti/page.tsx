@@ -257,7 +257,7 @@ const basicInfoPages = [
 
   
 return (
-    <div className="w-full h-[100svh]">
+    <div className="w-full h-[100svh] bg-white">
     <div className="md:hidden">
       <MobileHeader step={step} setStep={setStep} setPart1={setPart1}/>
     </div>

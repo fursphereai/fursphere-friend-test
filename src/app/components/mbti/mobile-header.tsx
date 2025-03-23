@@ -18,6 +18,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ step, setStep, setPart1 }) 
           toast.error('Failed to copy link');
         }
       };
+
   return (
     <div className="
       h-[56px]
