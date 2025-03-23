@@ -100,7 +100,9 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
             text-[16px] md:text-[18px]
             font-[Inter]
             font-[400]
-            ml-[10px]`}
+            ml-[10px]
+            text-[#101828]
+            `}
         >
           {surveyData.pet_info.PetGender === 'boy' ? 'His name is' : 'Her name is'}
         </label>
@@ -135,6 +137,7 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
             font-[Inter]
             font-[400]
             ml-[10px]
+            text-[#101828]
           "
         >
         {surveyData.pet_info.PetGender === 'boy' ? 'Please upload his stunning photo' : 'Please upload her stunning photo'}
