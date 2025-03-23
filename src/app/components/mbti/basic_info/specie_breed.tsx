@@ -119,7 +119,100 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
           'Wire Fox Terrier',
           'Yorkie (Yorkshire Terrier)'];
       case 'Cat':
-        return ['Folded Ear', 'Hairless Cats', 'Hybrid Breeds', 'Longhair Cats', 'Natural Breeds', 'Oriental Cats', 'Shorthair Cats'];
+        return [
+          'Not Sure',
+          'Abyssinian',
+          'American Bobtail',
+          'American Curl',
+          'American Shorthair',
+          'American Wirehair',
+          'Arabian Mau',
+          'Balinese',
+          'Bengal',
+          'Birman',
+          'Bombay',
+          'British Longhair',
+          'British Shorthair',
+          'Burmese',
+          'Burmilla',
+          'Chartreux',
+          'Chausie',
+          'Cheetoh',
+          'Colorpoint Shorthair',
+          'Cornish Rex',
+          'Cymric',
+          'Cypriot',
+
+          'Devon Rex',
+          'Donskoy',
+          'Dragon Li',
+
+          'Egyptian Mau',
+          'European Burmese',
+          'Exotic Shorthair',
+          'Havana Brown',
+          'Himalayan',
+          'Highlander',
+          'Highland Fold',
+
+
+          'Japanese Bobtail',
+          'Javanese',
+
+          'Khao Manee',
+          'Korat',
+          'Korean Bobtail',
+
+          'LaPerm',
+          'Lykoi',
+
+          'Maine Coon',
+          'Manx',
+          'Minskin',
+          'Munchkin',
+
+          'Nebelung',
+          'Norwegian Forest Cat',
+
+          'Ocicat',
+          'Ojos Azules',
+          'Oriental Longhair',
+          'Oriental Shorthair',
+
+          'Persian',
+          'Peterbald',
+          'Pixie-Bob',
+          'Persian Chinchilla',
+    
+
+          'Ragamuffin',
+          'Ragdoll',
+          'Russian Blue',
+    
+
+          'Savannah',
+          'Scottish Fold',
+          'Selkirk Rex',
+          'Serengeti',
+          'Siamese',
+          'Siberian',
+          'Singapura',
+          'Snowshoe',
+          'Sokoke',
+          'Somali',
+          'Sphynx',
+          'Suphalak',
+
+          'Thai',
+          'Tonkinese',
+          'Toyger',
+          'Turkish Angora',
+          'Turkish Van',
+
+          'Ukrainian Levkoy',
+          
+          
+        ];
       case 'Others':
         return [];
       default:
@@ -177,14 +270,14 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
         <div className=" relative flex flex-col  items-center  w-full mx-auto h-full ">
 
           <div className="  max-w-[540px] flex flex-col items-left  h-full">
-            <label className="
+            <div className="
                     mt-[40px] md:mt-[85px]
                     text-[16px] md:text-[18px]
                     font-[Inter]
                     font-[400]
                     ml-[10px]
                         ">My pet is a
-            </label>
+            </div>
 
           <div className="  flex flex-row w-[320px] md:w-[540px] h-[44px] mt-[19px]">
 
@@ -338,7 +431,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                             <div
                               key={species}
                               data-species={species}
-                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-30`}
+                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-50`}
                             >
                               {species}
                             </div>
@@ -371,7 +464,11 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
              
           `}
           >
-          {!breedavailable ? '' : (surveyData.pet_info.PetBreed || 'Breed')}
+          {!breedavailable ? '' : 
+          <div className="w-[130px] overflow-hidden whitespace-nowrap text-ellipsis">
+          {surveyData.pet_info.PetBreed || 'Breed'}
+          </div>
+          }
         </button>
           )}
          {breedavailable && (
@@ -508,7 +605,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                             <div
                               key={breed}
                               data-breed={breed}
-                              className={`breed-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400]`}
+                              className={`breed-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-50`}
                             >
                               {breed}
                             </div>
