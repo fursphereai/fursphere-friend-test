@@ -6,6 +6,7 @@ interface SurveyData {
 
   pet_info: {
     PetAge: string,
+    PetGender: string,
   };
 }
 
@@ -128,7 +129,7 @@ const Age: React.FC<AgeProps> = ({ handleNext, handleBack, step, setStep, survey
           <div className="w-full h-full flex flex-col">
           
               <div className="text-[16px] md:text-[18px] text-[#101828] font-inter tracking-[-0.4px] mt-[40px] md:mt-[85px] pl-[10px]">
-                How old is your pet?
+                How old is {surveyData.pet_info.PetGender === 'boy' ? 'he' : 'she'}?
               </div>
               
               {/* 移动端显示原生选择器 */}

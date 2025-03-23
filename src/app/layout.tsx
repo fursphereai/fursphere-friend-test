@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
+
+import { Toaster } from 'react-hot-toast';
+
 import "./globals.css";
-import Image from 'next/image';
 import { LogginProvider } from "./context/LogginContext";
 import { ProgressProvider } from "./context/ProgressContext";
 import { Inter, Ubuntu, Poppins } from 'next/font/google'
@@ -37,6 +39,7 @@ export default function RootLayout({
       <LogginProvider>
         <ProgressProvider>
           {children}
+          <Toaster />
         </ProgressProvider>
       </LogginProvider>
       </body>

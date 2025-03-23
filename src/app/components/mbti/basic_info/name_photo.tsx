@@ -65,7 +65,7 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
                 A name and image help us create a more personalized result poster for you, but feel free to skip if you're not comfortable!
               </span>
               <a
-                href="#sample" 
+                // href="#sample" 
                 className=" text-[14px] text-[#5777D0] underline hover:opacity-80 leading-[16.94px]"
               >
                 View Sample
@@ -102,7 +102,7 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
             font-[400]
             ml-[10px]`}
         >
-          Her name is
+          {surveyData.pet_info.PetGender === 'boy' ? 'His name is' : 'Her name is'}
         </label>
         <input
           type="text"
@@ -137,7 +137,7 @@ const NamePhoto: React.FC<NamePhotoProps>  = ({ handleNext, handleBack, step, se
             ml-[10px]
           "
         >
-          Please upload her stunning photo
+        {surveyData.pet_info.PetGender === 'boy' ? 'Please upload his stunning photo' : 'Please upload her stunning photo'}
         </label>
         <ImageUpload updateAnswer={updateAnswer} surveyData={surveyData} />
 

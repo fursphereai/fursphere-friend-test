@@ -8,16 +8,34 @@ interface MobileHeaderProps {
 }
 
 const MobileHeader: React.FC<MobileHeaderProps> = ({ step, setStep, setPart1 }) => {
-
     const handleShare = async () => {
         try {
-          await navigator.clipboard.writeText("https://github.com/tmfilho/akcdata");
-          toast.success('Link copied to clipboard!');
+          await navigator.clipboard.writeText("inspiring-dasik-d3fc61.netlify.app");
+          toast.success('copied to clipboard!', {
+            duration: 2000,
+            position: 'bottom-center',
+            style: {
+              background: 'white',
+              color: 'black',
+              padding: '16px',
+              borderRadius: '10px',
+            },
+         
+          });
         } catch (err) {
           console.error('Failed to copy link:', err);
-          toast.error('Failed to copy link');
+          toast.error('Failed to copy link', {
+            duration: 2000,
+            position: 'bottom-center',
+            style: {
+              background: '#f44336',
+              color: '#fff',
+              padding: '16px',
+              borderRadius: '10px',
+            },
+          });
         }
-      };
+    };
 
   return (
     <div className="
