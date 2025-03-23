@@ -84,8 +84,12 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
   ];
 
   const handleNextClick = async() => {
-    handleSubmit();
-    setShowComment(true); 
+    if (surveyData.user_info.email) {
+      handleSubmit();
+      setShowComment(true); 
+    } else {
+      return;
+    }
  
   };
 
@@ -200,7 +204,7 @@ const Question13: React.FC<Question13Props>  = ({ handleNext, handleBack, step, 
               </button> */}
 
               <button 
-                className="w-[124px] h-[44px] rounded-[22px] flex text-white items-center justify-center md:w-[101px] md:p-0 bg-[#5777D0]"
+                className={`w-[124px] h-[44px] rounded-[22px] flex text-white items-center justify-center md:w-[101px] md:p-0 ${surveyData.user_info.email ? 'bg-[#5777D0]' : 'bg-[#717680]'}`}
                 onClick={handleNextClick}
               >
         
