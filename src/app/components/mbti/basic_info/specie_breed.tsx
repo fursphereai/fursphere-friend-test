@@ -267,7 +267,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
      
       
           
-        <div className=" relative flex flex-col  items-center  w-full mx-auto h-full ">
+        <div className=" relative flex flex-col items-center  w-full mx-auto h-full ">
 
           <div className=" max-w-[540px] flex flex-col items-left  h-full">
             <div className="
@@ -276,6 +276,8 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                     font-inter
                     font-[400]
                     ml-[10px]
+                    w-full
+                    bg-blue-500
                         ">My pet is a
             </div>
 
