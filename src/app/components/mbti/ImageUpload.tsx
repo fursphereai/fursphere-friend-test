@@ -1,3 +1,4 @@
+import { supabase } from '@/app/lib/supabase';
 import React, { useState } from 'react';
 
 interface SurveyData {
@@ -46,78 +47,88 @@ interface ImageUploadProps {
 }
 
 
-const compressImage = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {  // Add reject handler
-    try {
-      const reader = new FileReader();
+// const compressImage = (file: File): Promise<string> => {
+//   return new Promise((resolve, reject) => {  // Add reject handler
+//     try {
+//       const reader = new FileReader();
       
-      reader.onerror = () => {
-        reject(new Error('FileReader failed'));
-      };
+//       reader.onerror = () => {
+//         reject(new Error('FileReader failed'));
+//       };
 
-      reader.onload = (e) => {
-        if (!e.target?.result) {
-          reject(new Error('No result from FileReader'));
-          return;
-        }
+//       reader.onload = (e) => {
+//         if (!e.target?.result) {
+//           reject(new Error('No result from FileReader'));
+//           return;
+//         }
 
-        const img = new Image();
+//         const img = new Image();
         
-        img.onerror = () => {
-          reject(new Error('Image failed to load'));
-        };
+//         img.onerror = () => {
+//           reject(new Error('Image failed to load'));
+//         };
 
-        img.onload = () => {
-          try {
-            const canvas = document.createElement('canvas');
-            const maxWidth = 400;
-            const ratio = maxWidth / img.width;
-            canvas.width = maxWidth;
-            canvas.height = img.height * ratio;
+//         img.onload = () => {
+//           try {
+//             const canvas = document.createElement('canvas');
+//             const maxWidth = 400;
+//             const ratio = maxWidth / img.width;
+//             canvas.width = maxWidth;
+//             canvas.height = img.height * ratio;
 
-            const ctx = canvas.getContext('2d');
-            if (!ctx) {
-              reject(new Error('Failed to get canvas context'));
-              return;
-            }
+//             const ctx = canvas.getContext('2d');
+//             if (!ctx) {
+//               reject(new Error('Failed to get canvas context'));
+//               return;
+//             }
 
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            const compressedBase64 = canvas.toDataURL('image/jpeg', 0.4);
-            resolve(compressedBase64);
-          } catch (err) {
-            reject(err);
-          }
-        };
+//             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+//             const compressedBase64 = canvas.toDataURL('image/jpeg', 0.4);
+//             resolve(compressedBase64);
+//           } catch (err) {
+//             reject(err);
+//           }
+//         };
 
-        img.src = e.target.result as string;
-      };
+//         img.src = e.target.result as string;
+//       };
 
-      reader.readAsDataURL(file);
-    } catch (err) {
-      reject(err);
-    }
-  });
-};
+//       reader.readAsDataURL(file);
+//     } catch (err) {
+//       reject(err);
+//     }
+//   });
+// };
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) => {
   const [image, setImage] = useState<File | null>(null);
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const compressedBase64 = await compressImage(e.target.files[0]);
-    
-      
-        updateAnswer('pet_info', null, 'PetPhoto', compressedBase64);
-        setImage(e.target.files[0]);
-     
-    
-      
-     
-      // const reader = new FileReader();
-      // reader.onloadend = () => {
-      //   const base64String = reader.result as string;
+      try {
+        const file = e.target.files[0];
 
-      // };
-      // reader.readAsDataURL(e.target.files[0]);
+        // Upload to Supabase storage
+        const { data, error } = await supabase.storage
+          .from('pet-photos')
+          .upload(`${Date.now()}-${file.name}`, file);
+
+        if (error) {
+          throw error;
+        }
+
+        // Get public URL
+        const { data: { publicUrl } } = supabase.storage
+          .from('pet-photos')
+          .getPublicUrl(data.path);
+
+        // Update state with the public URL
+        updateAnswer('pet_info', null, 'PetPhoto', publicUrl);
+        setImage(file);
+
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        // Handle error appropriately
+      }
     }
   };
 
