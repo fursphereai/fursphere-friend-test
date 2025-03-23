@@ -102,28 +102,44 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) => {
   const [image, setImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>('');
+
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       try {
         const file = e.target.files[0];
-
+        setImage(file);
+        setImageUrl(URL.createObjectURL(file));
+        
         // Upload to Supabase storage
-        const { data, error } = await supabase.storage
-          .from('pet-photos')
-          .upload(`${Date.now()}-${file.name}`, file);
+        const { data, error: uploadError } = await supabase.storage
+        .from('pet-photos')
+        .upload(`${Date.now()}-${file.name}`, file);
 
-        if (error) {
-          throw error;
+        if (uploadError) {
+          throw uploadError;
+        }
+
+        if (!data?.path) {
+          throw new Error('Upload failed - no path returned');
         }
 
         // Get public URL
-        const { data: { publicUrl } } = supabase.storage
+        // Get public URL
+        const { data: { publicUrl }, error: urlError } = supabase.storage
           .from('pet-photos')
           .getPublicUrl(data.path);
 
+        if (urlError) {
+          throw urlError;
+        }
+
+        if (!publicUrl) {
+          throw new Error('Failed to get public URL');
+        }
+
         // Update state with the public URL
         updateAnswer('pet_info', null, 'PetPhoto', publicUrl);
-        setImage(file);
 
       } catch (error) {
         console.error('Error uploading image:', error);
@@ -142,9 +158,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
       >
         {surveyData.pet_info.PetPhoto ? (
           <img
-            src={typeof surveyData.pet_info.PetPhoto === 'string' 
-              ? surveyData.pet_info.PetPhoto 
-              : URL.createObjectURL(surveyData.pet_info.PetPhoto)}
+            // src={typeof surveyData.pet_info.PetPhoto === 'string' 
+            //   ? surveyData.pet_info.PetPhoto 
+            //   : URL.createObjectURL(surveyData.pet_info.PetPhoto)}
+            src={imageUrl}
             alt="Uploaded preview"
             className="w-full h-full object-cover rounded-[15px]"
           />
