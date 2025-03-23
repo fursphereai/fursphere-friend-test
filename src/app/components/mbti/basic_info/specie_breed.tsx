@@ -338,7 +338,7 @@ const SpecieBreed: React.FC<SpecieBreedProps> = ({ handleNext, handleBack, step,
                             <div
                               key={species}
                               data-species={species}
-                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400]`}
+                              className={`species-option bg-[#FFFFFF] h-[50px] flex items-center justify-center snap-center text-[14px] font-[400] z-30`}
                             >
                               {species}
                             </div>
