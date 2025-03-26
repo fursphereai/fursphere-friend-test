@@ -111,10 +111,14 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
         setImage(file);
         setImageUrl(URL.createObjectURL(file));
         
+        // Create a safe filename
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        
         // Upload to Supabase storage
         const { data, error: uploadError } = await supabase.storage
-        .from('pet-photos')
-        .upload(`${Date.now()}-${file.name}`, file);
+          .from('pet-photos')
+          .upload(fileName, file);
 
         if (uploadError) {
           throw uploadError;
@@ -125,14 +129,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
         }
 
         // Get public URL
-        // Get public URL
-        const { data: { publicUrl }, error: urlError } = supabase.storage
+        const { data: { publicUrl } } = supabase.storage
           .from('pet-photos')
           .getPublicUrl(data.path);
-
-        if (urlError) {
-          throw urlError;
-        }
 
         if (!publicUrl) {
           throw new Error('Failed to get public URL');
