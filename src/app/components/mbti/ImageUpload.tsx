@@ -111,6 +111,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
         setImage(file);
         setImageUrl(URL.createObjectURL(file));
         
+        
         // Create a safe filename
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}.${fileExt}`;
@@ -155,11 +156,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
         font-[Inter] text-[#27355D] hover:border-[#FFC542] hover:bg-[#F9F9F9]
         transition-all duration-200 ease-in-out"
       >
-        {surveyData.pet_info.PetPhoto ? (
+        {imageUrl ? (
           <img
-            // src={typeof surveyData.pet_info.PetPhoto === 'string' 
-            //   ? surveyData.pet_info.PetPhoto 
-            //   : URL.createObjectURL(surveyData.pet_info.PetPhoto)}
             src={imageUrl}
             alt="Uploaded preview"
             className="w-full h-full object-cover rounded-[15px]"
@@ -177,7 +175,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ updateAnswer, surveyData }) =
           className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
           style={{ width: '50px', height: '50px' }} 
         />
-        {surveyData.pet_info.PetPhoto && (
+        {imageUrl && (
         <div className="absolute top-[5px] left-[160px] w-[32px] h-[32px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path d="M15.9996 1.77783C13.1867 1.77783 10.437 2.61195 8.09813 4.17471C5.7593 5.73747 3.9364 7.95867 2.85995 10.5574C1.78351 13.1562 1.50186 16.0158 2.05063 18.7747C2.59939 21.5335 3.95393 24.0677 5.94294 26.0567C7.93196 28.0457 10.4661 29.4002 13.225 29.949C15.9838 30.4978 18.8434 30.2161 21.4422 29.1397C24.041 28.0632 26.2622 26.2403 27.8249 23.9015C29.3877 21.5627 30.2218 18.8129 30.2218 16.0001C30.2218 12.2281 28.7234 8.61061 26.0562 5.94342C23.389 3.27624 19.7715 1.77783 15.9996 1.77783Z" fill="#5777D0"/>
